@@ -1,0 +1,32 @@
+{
+  "auth": {
+    "cfjwauth966ac581": {
+      "service": "Cognito",
+      "providerPlugin": "awscloudformation",
+      "dependsOn": [],
+      "customAuth": false
+    }
+  },
+  "function": {
+    "authJWTLamdaedge": {
+      "build": true,
+      "providerPlugin": "awscloudformation",
+      "service": "Lambda",
+      "dependsOn": [
+        {
+          "category": "auth",
+          "resourceName": "cfjwauth966ac581",
+          "attributes": [
+            "UserPoolId"
+          ]
+        }
+      ]
+    },
+    "cfjwtauth": {
+      "build": true,
+      "providerPlugin": "awscloudformation",
+      "service": "Lambda",
+      "dependsOn": []
+    }
+  }
+}

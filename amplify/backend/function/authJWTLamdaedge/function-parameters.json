@@ -1,0 +1,12 @@
+{
+  "permissions": {
+    "auth": {
+      "cfjwauth966ac581": [
+        "create",
+        "read",
+        "update"
+      ]
+    }
+  },
+  "lambdaLayers": []
+}
