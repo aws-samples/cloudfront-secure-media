@@ -24,6 +24,15 @@ yarn-error.log*
 
 #amplify
 amplify/.config/
+amplify/cli.json
+amplify/backend/auth/
+amplify/backend/backend-config.json
+amplify/backend/tags.json
+amplify/backend/function/authJWTLamdaedge/amplify.state
+amplify/backend/function/authJWTLamdaedge/authJWTLamdaedge-cloudformation-template.json
+amplify/backend/function/authJWTLamdaedge/function-parameters.json
+amplify/backend/function/authJWTLamdaedge/parameters.json
+amplify/team-provider-info.json
 amplify/\#current-cloud-backend
 amplify/.config/local-*
 amplify/mock-data
