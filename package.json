@@ -9,7 +9,6 @@
     "@testing-library/user-event": "^12.1.10",
     "aws-amplify": "^3.3.4",
     "bootstrap": "^4.5.3",
-    "jsonwebtoken": "^8.5.1",
     "react": "^17.0.1",
     "react-bootstrap": "^1.4.0",
     "react-dom": "^17.0.1",

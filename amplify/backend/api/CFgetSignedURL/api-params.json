@@ -1,0 +1,42 @@
+{
+    "paths": [
+        {
+            "name": "/getSignedURL",
+            "lambdaFunction": "CFsignURL",
+            "privacy": {
+                "private": true,
+                "auth": [
+                    "/POST",
+                    "/GET",
+                    "/PUT",
+                    "/PATCH",
+                    "/DELETE"
+                ]
+            },
+            "policyResourceName": "/getSignedURL"
+        }
+    ],
+    "resourceName": "CFgetSignedURL",
+    "apiName": "CFgetSignedURL",
+    "functionArns": [
+        {
+            "lambdaFunction": "CFsignURL"
+        }
+    ],
+    "privacy": {
+        "auth": 1,
+        "unauth": 0,
+        "authRoleName": "amplify-cfjwauth-dev-180800-authRole",
+        "unAuthRoleName": "amplify-cfjwauth-dev-180800-unauthRole"
+    },
+    "dependsOn": [
+        {
+            "category": "function",
+            "resourceName": "CFsignURL",
+            "attributes": [
+                "Name",
+                "Arn"
+            ]
+        }
+    ]
+}
