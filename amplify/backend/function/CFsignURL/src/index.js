@@ -1,4 +1,8 @@
-'use strict';
+/* Amplify Params - DO NOT EDIT
+	ENV
+	FUNCTION_AUTHJWTLAMDAEDGE_NAME
+	REGION
+Amplify Params - DO NOT EDIT */'use strict';
 // load the AWS SDK
 const AWS = require('aws-sdk')
 
