@@ -11,7 +11,7 @@ class testplayer extends Component {
     super(props);
     this.state = {
       token: 0,
-      videoURL: "https://dtwq7j2a2lfi4.cloudfront.net/staticVideos/Big_Buck_Bunny_720_10s_5MB.mp4",
+      videoURL: "http://d2qohgpffhaffh.cloudfront.net/HLS/vanlife/withad/sdr_uncage_vanlife_admarker_60sec.m3u8",
       showComponent: true,
     };
     this.handleURLset = this.handleURLset.bind(this);
@@ -53,7 +53,7 @@ playerShow = () => {
       height: 420,
       bigPlayButton: true,
       token: this.state.token,
-      cookie: "testOsmar",
+      cookie: "test",
       sources: [{
         src: this.state.videoURL,
         type: 'application/x-mpegURL',

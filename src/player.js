@@ -6,7 +6,6 @@ export default class VideoPlayer extends React.Component {
   
   constructor(props) {
     super(props);
-    this.functionToPass = this.functionToPass.bind(this);
   }
   
   componentDidMount() {
