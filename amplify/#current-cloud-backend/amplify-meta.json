@@ -1,0 +1,61 @@
+{
+  "providers": {
+    "awscloudformation": {
+      "AuthRoleName": "amplify-cfjwauth-dev-180800-authRole",
+      "UnauthRoleArn": "arn:aws:iam::098435415742:role/amplify-cfjwauth-dev-180800-unauthRole",
+      "AuthRoleArn": "arn:aws:iam::098435415742:role/amplify-cfjwauth-dev-180800-authRole",
+      "Region": "us-east-1",
+      "DeploymentBucketName": "amplify-cfjwauth-dev-180800-deployment",
+      "UnauthRoleName": "amplify-cfjwauth-dev-180800-unauthRole",
+      "StackName": "amplify-cfjwauth-dev-180800",
+      "StackId": "arn:aws:cloudformation:us-east-1:098435415742:stack/amplify-cfjwauth-dev-180800/8564e650-1898-11eb-8dff-0af9b05c2cc1",
+      "AmplifyAppId": "d407nd93wrct"
+    }
+  },
+  "auth": {
+    "cfjwauth966ac581": {
+      "service": "Cognito",
+      "providerPlugin": "awscloudformation",
+      "dependsOn": [],
+      "customAuth": false,
+      "output": {
+        "AppClientSecret": "1m5phemrnm6940301cqbjgo71cgmg4uq9f1i4if1q7374ddm4p3n",
+        "UserPoolId": "us-east-1_DRBoVcEDj",
+        "AppClientIDWeb": "3v0cicdt0uan8dljbrpv6lteau",
+        "AppClientID": "d6l7alm3fv8ldr1ssh4d42u8e",
+        "IdentityPoolId": "us-east-1:c8da02f7-6a1d-4e54-8164-bb3b85ebe8d5",
+        "IdentityPoolName": "cfjwauth966ac581_identitypool_966ac581__dev",
+        "UserPoolName": "cfjwauth966ac581_userpool_966ac581"
+      },
+      "lastPushTimeStamp": "2020-12-08T23:22:26.404Z",
+      "providerMetadata": {
+        "s3TemplateURL": "https://s3.amazonaws.com/amplify-cfjwauth-dev-180800-deployment/amplify-cfn-templates/auth/cfjwauth966ac581-cloudformation-template.yml",
+        "logicalId": "authcfjwauth966ac581"
+      }
+    }
+  },
+  "function": {
+    "jwtauth": {
+      "build": true,
+      "providerPlugin": "awscloudformation",
+      "service": "Lambda",
+      "lastBuildTimeStamp": "2020-12-08T23:10:56.125Z",
+      "lastPackageTimeStamp": "2020-12-08T23:10:56.622Z",
+      "distZipFilename": "jwtauth-4461576a675256536331-build.zip",
+      "providerMetadata": {
+        "s3TemplateURL": "https://s3.amazonaws.com/amplify-cfjwauth-dev-180800-deployment/amplify-cfn-templates/function/jwtauth-cloudformation-template.json",
+        "logicalId": "functionjwtauth"
+      },
+      "lastPushTimeStamp": "2020-12-08T23:22:26.417Z",
+      "output": {
+        "Region": "us-east-1",
+        "Arn": "arn:aws:lambda:us-east-1:098435415742:function:jwtauth-dev",
+        "Name": "jwtauth-dev",
+        "LambdaExecutionRole": "cfjwauthLambdaRole4baf72dd-dev"
+      },
+      "lastPushDirHash": "WTlVu+z8lnXcY3UtVOTqxtXBMC8="
+    }
+  },
+  "api": {},
+  "video": {}
+}
