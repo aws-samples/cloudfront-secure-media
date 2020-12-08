@@ -1,11 +1,9 @@
 'use strict';
 var jwt = require('jsonwebtoken');  
 var jwkToPem = require('jwk-to-pem');
-//const querystring = require('querystring');
 
 /*
-TO DO:
-copy values from CloudFormation outputs into USERPOOLID and JWKS variables
+store values in SSM
 */
 
 var USERPOOLID = 'us-east-1_DRBoVcEDj';
@@ -14,7 +12,6 @@ var JWKS = '{"keys":[{"alg":"RS256","e":"AQAB","kid":"lEpBAGaRbWs8ErEq8+q+11psTX
 /*
 verify values above  
 */
-
 
 var region = 'us-east-1';
 var iss = 'https://cognito-idp.' + region + '.amazonaws.com/' + USERPOOLID;
@@ -49,14 +46,6 @@ exports.handler = (event, context, callback) => {
     
     const srcQuerystring = cfrequest.querystring;
     console.log('qurey pam=', srcQuerystring);
-
-    //Fail if no authorization header found
-    // Video JS is removing headers when custom header
-    /*if(!headers.authorization) {
-        console.log("no auth header");
-        callback(null, response401);
-        return false;
-    }*/
 
     //strip out "Bearer " to extract JWT token only
     var jwtToken = srcQuerystring.slice(6);

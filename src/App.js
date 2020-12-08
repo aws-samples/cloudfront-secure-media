@@ -11,7 +11,6 @@ import awsmobile from './aws-exports';
 Amplify.configure(awsmobile);
 
 class App extends Component {
-
   render() {
     return (
     <Router>
@@ -30,26 +29,16 @@ class App extends Component {
           </ul>
           </nav>
           <hr />
-
-
-
-
           <Switch>
               <Route exact path='/player' component={player} />
               <Route exact path='/' component={testplayer} />
           </Switch>
-
           <div>
            </div>
 
         </div>
       </Router>
-
-
-
     );
   }
 }
-    
-
 export default withAuthenticator(App);
