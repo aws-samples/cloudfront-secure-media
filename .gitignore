@@ -23,7 +23,7 @@ yarn-debug.log*
 yarn-error.log*
 
 #amplify
-#amplify/.config/
+amplify/.config/
 #amplify/cli.json
 #amplify/backend/auth/
 #amplify/backend/api/
@@ -38,7 +38,7 @@ yarn-error.log*
 #amplify/backend/function/CFsignURL/
 amplify/team-provider-info.json
 #amplify/\#current-cloud-backend
-#amplify/.config/local-*
+amplify/.config/local-*
 #amplify/mock-data
 #amplify/backend/amplify-meta.json
 #amplify/backend/awscloudformation
