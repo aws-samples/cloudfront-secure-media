@@ -39,7 +39,6 @@ amplify/backend/awscloudformation
 #amplify/backend/function/authJWTLamdaedge/function-parameters.json
 #amplify/backend/function/authJWTLamdaedge/parameters.json
 #amplify/backend/function/authJWTLamdaedge/amplify.state
-#amplify/backend/function/CFsignURL/
 amplify/team-provider-info.json
 #amplify/\#current-cloud-backend
 amplify/.config/local-*

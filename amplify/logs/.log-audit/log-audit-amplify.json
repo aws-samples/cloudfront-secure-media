@@ -6,19 +6,9 @@
     "auditLog": "/Users/osmarb/Desktop/cf-jw-auth/amplify/logs/.log-audit/log-audit-amplify.json",
     "files": [
         {
-            "date": 1607467989379,
-            "name": "/Users/osmarb/Desktop/cf-jw-auth/amplify/logs/amplify-cli-2020-12-08.log",
-            "hash": "1fd7189d3f3344699d70136685a40e7a"
-        },
-        {
-            "date": 1607471267176,
-            "name": "/Users/osmarb/Desktop/testsjt/secure-url-cf/amplify/logs/amplify-cli-2020-12-08.log",
-            "hash": "969e41f94b9ebc16f15f624a85574944"
-        },
-        {
-            "date": 1607539891790,
-            "name": "/Users/osmarb/Desktop/cf-jw-auth/amplify/logs/amplify-cli-2020-12-09.log",
-            "hash": "3cd308e68ae3378ef91fa1708962b9f7"
+            "date": 1610041857580,
+            "name": "/Users/osmarb/Desktop/cf-jw-auth/amplify/logs/amplify-cli-2021-01-07.log",
+            "hash": "ea5e40b74aeefea3d50ec649b472be22"
         }
     ]
 }

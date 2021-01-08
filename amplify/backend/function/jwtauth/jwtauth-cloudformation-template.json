@@ -62,7 +62,7 @@
         "Timeout": "1",
         "Code": {
           "S3Bucket": "amplify-cfjwauth-dev-180800-deployment",
-          "S3Key": "amplify-builds/jwtauth-4461576a675256536331-build.zip"
+          "S3Key": "amplify-builds/jwtauth-6d5174635a4c6f54386b-build.zip"
         }
       }
     },

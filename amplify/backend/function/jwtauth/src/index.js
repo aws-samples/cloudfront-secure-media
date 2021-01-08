@@ -1,26 +1,14 @@
 'use strict';
 var jwt = require('jsonwebtoken');  
 var jwkToPem = require('jwk-to-pem');
-
-/*
-store values in SSM
-*/
-
-var USERPOOLID = 'us-east-1_DRBoVcEDj';
-var JWKS = '{"keys":[{"alg":"RS256","e":"AQAB","kid":"lEpBAGaRbWs8ErEq8+q+11psTXahTixNIe7v3DcOQiU=","kty":"RSA","n":"l386VbwpGsFML-g_mwbh7ivdwT6m0JTp2F4h2rJ-Z9y7hBwKhHYMPnMMzXXnE-MUlSkD05Amvk7ZsN7kRHIv8uQnwXaAm8SQNl9e7SJOd_PlI4GzB_uBMhd_V7Z4ijpBHTmStDO8ff3cg6GNW4EVpv9Ux7EaU7vuC6Ace_TcgSpqqJ5wsPp7TAhtJS5JwIG2In86kLgQ8caa1Yd4lC0y7xLLeC1dZ-8m4DRClPs1xrO5840i2xanrOMrbAnSvSfNEGSDVN-T2FKs4N4e2h0jmve0BorCrVCsus5gpzr4MJ4SJlhfELh9dhUhXji3KpMkLA0y3IZrJRIBYveEi-9WeQ","use":"sig"},{"alg":"RS256","e":"AQAB","kid":"X7bZrqnWFxtFKDtIlqphlblmMtrCCnTCVSqZ5BFFlLM=","kty":"RSA","n":"uyCyrAgzqpGMxhvnFexZU8bocg9v7omFo35O6j9xHaG4Q0UYFfFCj-3SkT1R_UjBbdTWLNQk3gVENUJRlHdffZKkXzQD_drglt5DZ0inWqsipePB4ZzTGKJgw7QftxbKYmbTIfEjDQJEHkvKU2CLLsho_-0MxMd_nwSP0gc1JixMqPvooIaR0dpJVNZ8TullxWnAxx4gsW0xdm20MGy33t-qNlOsocZY8bfXzKOq0jNzfsl4wb8iop93-JWImBBhkDF-mBTqFeMmRcmBFq4geq_tYWT0yKeb63o_gXl68BX7z_CKA-j5wZmwXXE8L8Cvqr7CtdebXeWvhS1T5ZMaAw","use":"sig"}]}';
-
-/*
-verify values above  
-*/
-
-var region = 'us-east-1';
-var iss = 'https://cognito-idp.' + region + '.amazonaws.com/' + USERPOOLID;
+var config = require('./config');
+var JWKS = config.JWKS; // please configure the file config.js
+var iss = 'https://cognito-idp.' + config.REGION + '.amazonaws.com/' + config.USERPOOLID;
 var pems;
 
 pems = {};
 var keys = JSON.parse(JWKS).keys;
 for(var i = 0; i < keys.length; i++) {
-    //Convert each key to PEM
     var key_id = keys[i].kid;
     var modulus = keys[i].n;
     var exponent = keys[i].e;
@@ -35,14 +23,13 @@ const response401 = {
     statusDescription: 'Unauthorized'
 };
 
-exports.handler = (event, context, callback) => {
+exports.handler = (event, callback) => {
     const cfrequest = event.Records[0].cf.request;
     const headers = cfrequest.headers;
     console.log('getting started');
-    console.log('USERPOOLID=' + USERPOOLID);
-    console.log('region=' + region);
     console.log('pems=' + pems);
     console.log('cfrequest=' + cfrequest);
+    console.log("!!!", config, iss, JWKS);
     
     const srcQuerystring = cfrequest.querystring;
     console.log('qurey pam=', srcQuerystring);
@@ -61,9 +48,9 @@ exports.handler = (event, context, callback) => {
         return false;
     }
 
-    //Fail if token is not from your UserPool
+    // UserPool check
     if (decodedJwt.payload.iss != iss) {
-        console.log("invalid issuer");
+        console.log("invalid issuer, check config.js");
         callback(null, response401);
         return false;
     }
