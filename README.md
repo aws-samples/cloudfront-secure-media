@@ -156,3 +156,6 @@ Now that we have pushed the function to check the JWT Token to the cloud, you ha
 Now open your web application and play some test content.
 In the video URL field, add the full CloudFront URL of your output asset created at step 5.
 <img src="SimplePlayer.png" alt="Simple Player Demo" />
+
+### License Summary
+This sample code is made available under a modified MIT license. See the LICENSE file.
