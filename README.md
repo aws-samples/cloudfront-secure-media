@@ -1,6 +1,6 @@
 # Secure your Media Workloads
 
-Referece code for protecting your Media assets with AWS Cognito JWT Token, Lambda@Edge and Video.js
+Referece code for protecting your Amazon CloudFront media distributions with AWS Cognito JWT Token, Lambda@Edge and Video.js
 
 ## Deployment Steps
 
