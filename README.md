@@ -2,7 +2,7 @@
 
 Referece code for protecting your Amazon CloudFront media distributions with AWS Cognito JWT Token, Lambda@Edge and Video.js
 
-## Deployment Steps
+## Deployment Steps:
 
 1. Project Dependencies
 
