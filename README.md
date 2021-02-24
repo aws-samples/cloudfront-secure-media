@@ -12,22 +12,26 @@ For more complete steps of installing and configure AWS Amplify please visit the
 ```
   npm install -g @aws-amplify/cli
   amplify configure
-  amplify init
 ```
 
 2. Clone the repository
+We will clone using the amplify init app. AWS Amplify will create a sample implementation on your local environment and provision the AWS backend resources: (API and Authentication).
 
 ```
-  git clone https://github.com/osmarbento-AWS/secure-url-cf.git 
+  mkdir secure-url-cf
   cd secure-url-cf
-  npm install
-  amplify init --app https://github.com/osmarbento-AWS/secure-url-cf.git
-  amplify init
-  amplify push
+  amplify init --app https://github.com/aws-samples/cloudfront-secure-media.git
+  > Using default provider  awscloudformation
+  ? Select the authentication method you want to use: 
+  ❯ AWS profile 
+    AWS access keys 
 ```
 
+Amplify cli will ask to select the AWS profile created on the previous step (with amplify configure)
 
-3. Start you local environment 
+3. Start your local environment 
+
+AWS Amplify will start automatically the local environment, or you can use the command below:
 
 ```
   npm start
@@ -37,9 +41,9 @@ It should load the authentication page. Now you can create your first account an
 <img src="SimplePlayer.png" alt="Simple Player Demo" />
 
 
-4. Add some videos resources to a S3 bucket
+4. Setup the video workflow:
 
-We will be using Amplify Video (https://github.com/awslabs/amplify-video) for creating some test VOD content, Amplify Video is an open-source plugin for the Amplify CLI, that makes easy to incorporate video streaming to your web or mobile applications. Powered by AWS Amplify (https://aws-amplify.github.io/) and AWS Media Services (https://aws.amazon.com/media-services/).
+We will be using Amplify Video (https://github.com/awslabs/amplify-video) for creating some test VOD content, Amplify Video is an open-source plugin for the Amplify CLI, that makes it easy to incorporate video streaming to your web or mobile applications. Powered by AWS Amplify (https://aws-amplify.github.io/) and AWS Media Services (https://aws.amazon.com/media-services/).
 Amplify video also supports live workflows. For more options and sample implementations, please visit amplify-video (https://github.com/awslabs/amplify-video) GitHub.
 
 ```
@@ -58,7 +62,7 @@ Amplify video also supports live workflows. For more options and sample implemen
   amplify push
 ```
 
-Amplify Video will create the S3 bucket to store the source content, the transcoded content, it will also deploy the CloudFront distribution. Please see the sample result of amplify push
+Amplify Video will create the S3 bucket to store the source content, the transcoded content, it will also deploy the CloudFront distribution. Please see the sample result of amplify push.
 
 ```
   Video on Demand:
@@ -71,7 +75,7 @@ Amplify Video will create the S3 bucket to store the source content, the transco
 ```
 
 
-*Note:* Amplify Video also offers the option to protect the content with signed URL, you can find more information on how to use signed url using amplify video at Getting Started with VOD (https://github.com/awslabs/amplify-video/wiki/Getting-Started-with-VOD).
+*Note:* Amplify Video also offers the option to protect the content with a signed URL, you can find more information on how to use signed url using amplify video at Getting Started with VOD (https://github.com/awslabs/amplify-video/wiki/Getting-Started-with-VOD).
 
 *Test Transcoding*
 
@@ -80,7 +84,7 @@ Once the file has been successfully uploaded, navigate the MediaConvert Console 
 
 *Testing Media Playback*
 
-After the MediaConvert job has reached a completed state, navigate back to the S3 Console, and locate the output bucket. When you step into the bucket you will see a folder with the name of the file you uploaded. Step into the folder and you will see the output files created by MediaConvert. Locate the HLS Manifest, the file with the .m3u8 extension, then replace the S3 domain by the Output URL for content.
+After the MediaConvert job has reached a completed state, navigate back to the S3 Console, and locate the output bucket. When you step into the bucket you will see a folder with the name of the file you uploaded. Step into the folder and you will see the output files created by MediaConvert. Locate the HLS Manifest, the file with the .m3u8 extension, then replace the S3 domain with the Output URL of the content.
 
 The format of the playable URL will be the Output URL for content + /name of the asset/ + name of the asset.m3u8
 Example: https://someid.cloudfront.net/BigBuckBunny/BigBuckBunny.m3u8
@@ -143,7 +147,7 @@ Now deploy your lambda function by simply executing amplify push in the home app
 
 6. *Deploy to Lambda@Edge*
 
-Now that we have pushed the function to check the JWT Token to the cloud, you have to deploy it to your distribution, that has been created at step 5.
+Now that we have pushed the function to check the JWT Token to the cloud, you have to deploy it to your distribution, which has been created at step 5.
 
 *a. Go to the* *CloudFront console* (https://console.aws.amazon.com/cloudfront/)*, and get the distribution ARN created at step 5*
 
@@ -156,6 +160,13 @@ Now that we have pushed the function to check the JWT Token to the cloud, you ha
 Now open your web application and play some test content.
 In the video URL field, add the full CloudFront URL of your output asset created at step 5.
 <img src="SimplePlayer.png" alt="Simple Player Demo" />
+
+8. Cleanup, removing the provisioned AWS resources.
+If you need to remove the resources deployed by this sample, you can use the command below:
+
+```
+  amplify delete
+```
 
 ### License Summary
 This sample code is made available under a modified MIT license. See the LICENSE file.
