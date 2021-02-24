@@ -3,21 +3,16 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
-    "@aws-amplify/ui-react": "^0.2.24",
-    "@testing-library/jest-dom": "^5.11.5",
-    "@testing-library/react": "^11.1.0",
-    "@testing-library/user-event": "^12.1.10",
-    "aws-amplify": "^3.3.4",
-    "bootstrap": "^4.5.3",
+    "@aws-amplify/ui-react": "^1.0.2",
+    "@testing-library/jest-dom": "^5.11.9",
+    "aws-amplify": "^3.3.20",
     "react": "^17.0.1",
-    "react-bootstrap": "^1.4.0",
+    "react-bootstrap": "^1.5.0",
     "react-dom": "^17.0.1",
     "react-router-dom": "^5.2.0",
-    "react-scripts": "4.0.0",
-    "react-styled-flexboxgrid": "^3.2.1",
-    "styled-components": "^5.2.0",
-    "video.js": "^7.10.1",
-    "web-vitals": "^0.2.4"
+    "react-scripts": "4.0.3",
+    "video.js": "^7.11.4",
+    "web-vitals": "^1.1.0"
   },
   "scripts": {
     "start": "react-scripts start",
