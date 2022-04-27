@@ -14,9 +14,6 @@ writeConfig();
 
 async function writeConfig() {
   await getJWKSinfo(congnitoJWKSurl);
-
-  console.log("HERE", config.JWKS);
-
   let params = `
   var config = {};
   config.REGION = '${config.REGION}'
@@ -53,8 +50,5 @@ async function getJWKSinfo(url) {
     .catch(function (error) {
       // handle error
       console.log(error);
-    })
-    .then(function () {
-      // always executed
     });
 }
