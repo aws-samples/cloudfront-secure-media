@@ -1,6 +1,6 @@
-# Secure your Media Workloads
+# Secure your Media Workloads with JWT Token with Lambda@Edge
 
-Referece code for protecting your Amazon CloudFront media distributions with AWS Cognito JWT Token, Lambda@Edge and Video.js
+This is a sample code for protecting your Amazon CloudFront media distributions with AWS Cognito JWT Token, Lambda@Edge and Video.js
 
 ## Deployment Steps:
 
@@ -38,7 +38,7 @@ AWS Amplify will start automatically the local environment, or you can use the c
 ```
 It should load the authentication page. Now you can create your first account and sign in.
  *After the login, it should load the following local website:*
-<img src="SimplePlayer.png" alt="Simple Player Demo" />
+<img src="/doc/SimplePlayer.png" alt="Simple Player Demo" />
 
 
 4. Setup the video workflow:
@@ -159,7 +159,7 @@ Now that we have pushed the function to check the JWT Token to the cloud, you ha
 
 Now open your web application and play some test content.
 In the video URL field, add the full CloudFront URL of your output asset created at step 5.
-<img src="SimplePlayer.png" alt="Simple Player Demo" />
+<img src="/doc/SimplePlayer.png" alt="Simple Player Demo" />
 
 8. Cleanup, removing the provisioned AWS resources.
 If you need to remove the resources deployed by this sample, you can use the command below:

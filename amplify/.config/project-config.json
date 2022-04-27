@@ -1,6 +1,6 @@
 {
-  "projectName": "cfjwauth",
-  "version": "3.0",
+  "projectName": "playerJWTcognito",
+  "version": "3.1",
   "frontend": "javascript",
   "javascript": {
     "framework": "react",
