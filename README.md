@@ -4,44 +4,88 @@ This is a sample code for protecting your Amazon CloudFront media distributions 
 
 ## Deployment Steps:
 
-1. Project Dependencies
+### 1. Project Dependencies
 
 For building the integration with AWS components and host our web application we will be using AWS Amplify. 
 For more complete steps of installing and configure AWS Amplify please visit the documentation (Amplify Documentation (https://docs.amplify.aws/start/getting-started/installation/q/integration/react#option-2-follow-the-instructions) for React). 
 
-```
+```sh
   npm install -g @aws-amplify/cli
   amplify configure
 ```
 
-2. Clone the repository
+*[Optional]* If you are using [AWS Cloud9](https://aws.amazon.com/cloud9/), you need to copy the cretential for the amplify config
+
+```sh
+  cp ~/.aws/credentials ~/.aws/config
+```
+
+### 2. Clone the repository
 We will clone using the amplify init app. AWS Amplify will create a sample implementation on your local environment and provision the AWS backend resources: (API and Authentication).
 
-```
-  mkdir secure-url-cf
-  cd secure-url-cf
-  amplify init --app https://github.com/aws-samples/cloudfront-secure-media.git
-  > Using default provider  awscloudformation
-  ? Select the authentication method you want to use: 
-  ❯ AWS profile 
-    AWS access keys 
+```sh
+  git clone https://github.com/aws-samples/cloudfront-secure-media.git
+  cd cloudfront-secure-media/
 ```
 
-Amplify cli will ask to select the AWS profile created on the previous step (with amplify configure)
+Now install the dependencies and start your backend environment with AWS Amplify.
 
-3. Start your local environment 
+```sh
+  npm install   
+```
+```sh
+  amplify init
+  ? Enter a name for the environment dev
+  ? Choose your default editor: Visual Studio Code
+  Using default provider  awscloudformation
+  ? Select the authentication method you want to use: AWS profile
+  ? Please choose the profile you want to use default
+```
+*Please make sure to select correct aws profile created with amplify configure*
 
-AWS Amplify will start automatically the local environment, or you can use the command below:
+### 3. Create your cloud environment for authentication
+
+```sh
+  amplify status
+```
+
+It should list the following resources:
 
 ```
+      Current Environment: dev
+      
+  ┌──────────┬──────────────────────────┬───────────┬───────────────────┐
+  │ Category │ Resource name            │ Operation │ Provider plugin   │
+  ├──────────┼──────────────────────────┼───────────┼───────────────────┤
+  │ Auth     │ playerjwtcognito5d5d2eb2 │ Create    │ awscloudformation │
+  ├──────────┼──────────────────────────┼───────────┼───────────────────┤
+  │ Function │ jwtauth                  │ Create    │ awscloudformation │
+  └──────────┴──────────────────────────┴───────────┴───────────────────┘
+```
+
+To create the Amazon Cognito user pool for authenticate our users, and provide the JWT token to protect your media resources, we need to push the local resources to the AWS cloud.
+
+```sh
+  amplify push
+```
+
+## 4. Start your local environment 
+
+Now you can start testig your application
+
+```sh
   npm start
 ```
-It should load the authentication page. Now you can create your first account and sign in.
+It should load the authentication page. Now you can create your first user account and sign in.
+Click in *Create Account*
+
+<img src="/doc/Auth01.png" alt="Create your Account" />
+
  *After the login, it should load the following local website:*
 <img src="/doc/SimplePlayer.png" alt="Simple Player Demo" />
 
-
-4. Setup the video workflow:
+### 5. Setup the video workflow: **[ Optional ]**
+*Note: You can jump this step if you already have a video, HLS content in a S3 bucket*
 
 We will be using Amplify Video (https://github.com/awslabs/amplify-video) for creating some test VOD content, Amplify Video is an open-source plugin for the Amplify CLI, that makes it easy to incorporate video streaming to your web or mobile applications. Powered by AWS Amplify (https://aws-amplify.github.io/) and AWS Media Services (https://aws.amazon.com/media-services/).
 Amplify video also supports live workflows. For more options and sample implementations, please visit amplify-video (https://github.com/awslabs/amplify-video) GitHub.
@@ -77,32 +121,32 @@ Amplify Video will create the S3 bucket to store the source content, the transco
 
 *Note:* Amplify Video also offers the option to protect the content with a signed URL, you can find more information on how to use signed url using amplify video at Getting Started with VOD (https://github.com/awslabs/amplify-video/wiki/Getting-Started-with-VOD).
 
-*Test Transcoding*
+**Test Transcoding**
 
 Navigate to the S3 console. Amplify Video has deployed a few buckets into your environment. Select the input bucket and upload a .mp4 file you have stored locally on your computer.
 Once the file has been successfully uploaded, navigate the MediaConvert Console to see your transcode job kicked off. This job takes the input file, transcodes it into the Apple HTTP Live Streaming Protocol (HLS), and outputs the segment files to the S3 bucket labeled output.
 
-*Testing Media Playback*
+**Testing Media Playback**
 
 After the MediaConvert job has reached a completed state, navigate back to the S3 Console, and locate the output bucket. When you step into the bucket you will see a folder with the name of the file you uploaded. Step into the folder and you will see the output files created by MediaConvert. Locate the HLS Manifest, the file with the .m3u8 extension, then replace the S3 domain with the Output URL of the content.
 
 The format of the playable URL will be the Output URL for content + /name of the asset/ + name of the asset.m3u8
 Example: https://someid.cloudfront.net/BigBuckBunny/BigBuckBunny.m3u8
 
-5. Add JWT token authentication to your Amazon CloudFront distribution.
+### 5. Add JWT token authentication to your Amazon CloudFront distribution.
 
 *a. Install the dependencies of Lambda@Edge JWT authentication*
 
 ```
   cd amplify/backend/function/jwtauth/src/
-  npm install
 ```
 
-*b. Edit the index.js function file and add your Cognito User Pool attributes*
+*a. Edit the index.js function file and add your Cognito User Pool attributes*
 
 Open the config.js file, located in
 
 ```
+  cd amplify/backend/function/jwtauth/src/
   amplify/backend/function/jwtauth/src/config.js
 ```
 

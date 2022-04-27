@@ -3,6 +3,13 @@
   background-color: #1b1a1ae1;
 }
 
+.form-custom {
+  display: inline-block;
+  max-width: 500px;
+  align-items: center;
+  margin: 10px;
+}
+
 .title {
   margin-top: 10px;
   color: white;

@@ -1,7 +1,9 @@
-import React from "react";
+import React, { useState, useRef } from "react";
 import "./Home.css";
 import VideoPlayer from "./playerjs/";
 import Table from "react-bootstrap/Table";
+import Form from "react-bootstrap/Form";
+import Button from "react-bootstrap/Button";
 
 export default function Home(props) {
   console.log("HOME", props);
@@ -10,9 +12,11 @@ export default function Home(props) {
 
   const username = props.username;
   const token = props.token;
+  const playerRef = useRef(null);
 
-  const videoURL =
-    "http://d2qohgpffhaffh.cloudfront.net/HLS/vanlife/withad/sdr_uncage_vanlife_admarker_60sec.m3u8";
+  const [videoURL, setvideoURL] = useState(
+    "http://d2qohgpffhaffh.cloudfront.net/HLS/vanlife/withad/sdr_uncage_vanlife_admarker_60sec.m3u8"
+  );
 
   const videoJsOptions = {
     autoplay: "muted", //mute audio when page loads, but auto play video
@@ -42,11 +46,41 @@ export default function Home(props) {
     player.on("playing", () => {
       console.log("player playing");
     });
+
+    playerRef.current = player;
+  };
+
+  const handlePlay = (e) => {
+    e.preventDefault();
+    console.log("New URL is", videoURL);
+    playerRef.current.src(videoURL);
   };
 
   return username && token ? (
     <div className="container">
       <h1 className="title">Simple Player JWT Token</h1>
+
+      <Form>
+        <Form.Group className="mb-3" controlId="formBasicEmail">
+          <Form.Control
+            className="form-custom"
+            type="text"
+            value={videoURL}
+            onChange={(e) => setvideoURL(e.target.value)}
+          />
+          <Button
+            variant="primary"
+            type="submit"
+            onClick={(e) => handlePlay(e)}
+          >
+            Play
+          </Button>
+        </Form.Group>
+        <Form.Text className="text-muted">
+          This need to be a HTTP video type, such as HLS, otherwise change the
+          videoJsOptions
+        </Form.Text>
+      </Form>
 
       <div className="videoborder">
         <VideoPlayer
