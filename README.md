@@ -141,7 +141,7 @@ Example: https://someid.cloudfront.net/BigBuckBunny/BigBuckBunny.m3u8
   cd amplify/backend/function/jwtauth/src/
 ```
 
-*a. Edit the index.js function file and add your Cognito User Pool attributes*
+*b. Edit the index.js function file and add your Cognito User Pool attributes*
 
 Open the config.js file, located in
 
@@ -164,10 +164,16 @@ List the auth resources created and copy the User Pool id.
 The user pool id can be located in the URL returned by running *amplify auth console*
 https://us-east-1.console.aws.amazon.com/cognito/users/?region=us-east-1#/pool/us-east-SomeID/details
 
-Copy the *Pool Id *information and replace  in the var USERPOOLID
+Add the Region of the deployment (Cognito region) to the var 
 
 ```javascript
-  var USERPOOLID = 'us-east-1_SomeID';
+  config.REGION = 'us-east-1'
+```
+
+Copy the *Pool Id *information and replace in the var USERPOOLID
+
+```javascript
+  config.USERPOOLID = 'us-east-1_SomeID';
 ```
 
 *c. Download and store the corresponding public JSON Web Key (JWK) for your user pool. It is available as part of a JSON.*
@@ -180,7 +186,7 @@ You can see the sample jwks.json  in JSON Web Token documentation (https://docs.
  Now replace the JWKS with the credentials of your Cognito User Pool.
 
 ```javascript
-var JWKS = '{"keys":[{"alg":"RS256","e":"AQAB","kid":"1234exemple=","kty"::"RSA"....}]}
+  config.JWKS = '{"keys":[{"alg":"RS256","e":"AQAB","kid":"1234exemple=","kty"::"RSA"....}]}
 ```
 
 Now deploy your lambda function by simply executing amplify push in the home app folder.
@@ -194,9 +200,14 @@ Now deploy your lambda function by simply executing amplify push in the home app
 Now that we have pushed the function to check the JWT Token to the cloud, you have to deploy it to your distribution, which has been created at step 5.
 
 *a. Go to the* *CloudFront console* (https://console.aws.amazon.com/cloudfront/)*, and get the distribution ARN created at step 5*
+<img src="/doc/cloudfrontARN.png" alt="cloudfront arn" />
 
 
 *b. Go to Lambda console (https://console.aws.amazon.com/lambda), and Deploy the function to Lambda@Edge*
+<img src="/doc/DeploytoEDGE.png" alt="cloudfront arn" />
+
+Then, select **Viewer Request**
+<img src="/doc/DeploytoEDGE02.png" alt="cloudfront arn" />
 
 
 7. End-to-End Tests
