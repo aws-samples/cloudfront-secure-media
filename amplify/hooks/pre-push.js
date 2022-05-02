@@ -1,4 +1,4 @@
-// Copyright 2022 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+// Copyright Amazon.com, Inc. or its affiliates. All Rights Reserved.
 // SPDX-License-Identifier: MIT-0
 // Author Osmar Bento @osmarb
 
@@ -9,19 +9,6 @@ const fs = require("fs");
 const path = require("path");
 
 const filePath = path.join(__dirname, "..", "..", "/src/aws-exports.js");
-const strToRemove = "export default awsmobile;";
-/*const awsExports = fs.readFileSync(filePath, "utf-8", function (err, data) {
-  if (err) console.log(err);
-  else {
-    let splitArray = data.split("\n");
-    splitArray.splice(splitArray.indexOf(strToRemove), 1);
-    let result = splitArray.join("\n");
-    return result;
-  }
-
-    
-});*/
-
 readBlock(filePath);
 
 async function readBlock(file) {
