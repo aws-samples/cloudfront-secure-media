@@ -53,3 +53,4 @@ amplifytools.xcconfig
 amplify/team-provider-info.json
 amplify/backend/function/jwtauth/src/org.config.js.org
 amplify/backend/src/org.config.js.org
+amplify/backend/function/jwtauth/src/config.js

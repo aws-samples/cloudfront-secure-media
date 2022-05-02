@@ -1,3 +1,6 @@
+// Copyright Amazon.com, Inc. or its affiliates. All Rights Reserved.
+// SPDX-License-Identifier: MIT-0
+
 import React, { useState, useRef } from "react";
 import "./Home.css";
 import VideoPlayer from "./playerjs/";
