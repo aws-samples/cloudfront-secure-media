@@ -159,7 +159,7 @@ Now open your web application and play some test content.
 In the video URL field, add the full CloudFront URL of your output asset created at step 5.
 <img src="/doc/SimplePlayer.png" alt="Simple Player Demo" />
 
-8. Cleanup, removing the provisioned AWS resources.
+### 9. Cleanup, removing the provisioned AWS resources.  **[ Optional ]**
 If you need to remove the resources deployed by this sample, you can use the command below:
 
 ```sh
