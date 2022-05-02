@@ -1,6 +1,20 @@
 # Secure your Media Workloads with JWT Token with Lambda@Edge
 
-This is a sample code for protecting your Amazon CloudFront media distributions with AWS Cognito JWT Token, Lambda@Edge and Video.js
+Video streaming is no longer exclusively done by media companies. Schools, ecommerce retailers, tech companies, and banks are creating media content to distribute directly to their consumers. Video streaming, both live and on-demand, has become the prevailing communication tool to reach the target audiences. As the value and number of media assets grow, creating a secure distribution workflow to ensure that only the intended audiences have access.
+
+## Architecture overview
+
+<img src="/doc/architecture.png" alt="Architecture" />
+
+## Solution components
+In this post, we walk through the implementation of the component in the web APP (GitHub repository). We also go through the cloud components for authentication, token validation, and CDN caching.
+
+The frontend and backend AWS resources are built using [AWS Amplify](https://docs.amplify.aws/), an end-to-end solution that enables mobile and front-end web developers to build and deploy secure, scalable full-stack applications. With Amplify, you can configure app backends in minutes, connect them to your app in just a few lines of code, and deploy static web apps in three steps.
+
+The web app is built in React and uses Video.JS as the video player.
+
+After successful authentication, [Amazon Cognito](https://aws.amazon.com/cognito/) returns user pool tokens to your application. Then, you can use the token to grant access to the backend resources. In the proposed architecture, the token is used for signing the requests for media stream content, Lambda@Edge function decode and validate the token attributes, authenticating the spectator to watch the content.
+
 
 ## Deployment Steps:
 
