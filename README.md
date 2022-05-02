@@ -181,4 +181,4 @@ If you need to remove the resources deployed by this sample, you can use the com
 ```
 
 ### License Summary
-This sample code is made available under a modified MIT license. See the LICENSE file.
+This sample code is made available under a modified MIT-0 [LICENSE](LICENSE)
