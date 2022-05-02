@@ -90,7 +90,7 @@ Click in *Create Account*
 We will be using Amplify Video (https://github.com/awslabs/amplify-video) for creating some test VOD content, Amplify Video is an open-source plugin for the Amplify CLI, that makes it easy to incorporate video streaming to your web or mobile applications. Powered by AWS Amplify (https://aws-amplify.github.io/) and AWS Media Services (https://aws.amazon.com/media-services/).
 Amplify video also supports live workflows. For more options and sample implementations, please visit amplify-video (https://github.com/awslabs/amplify-video) GitHub.
 
-```
+```sh
   npm i amplify-category-video -g
 
   amplify add video
@@ -102,7 +102,7 @@ Amplify video also supports live workflows. For more options and sample implemen
   ? Do you want Amplify to create a new GraphQL API to manage your videos? (Beta) No
   ✔ All resources built.
 ```
-```
+```sh
   amplify push
 ```
 
@@ -133,69 +133,12 @@ After the MediaConvert job has reached a completed state, navigate back to the S
 The format of the playable URL will be the Output URL for content + /name of the asset/ + name of the asset.m3u8
 Example: https://someid.cloudfront.net/BigBuckBunny/BigBuckBunny.m3u8
 
-### 5. Add JWT token authentication to your Amazon CloudFront distribution.
+### 6. Add JWT token authentication to your Amazon CloudFront distribution.
 
-*a. Install the dependencies of Lambda@Edge JWT authentication*
+This step has been astracted by Amaplify Hooks, by creating a before push script.
+If you need to configure manually [follow this guide](/Cognito_MANUAL.md)
 
-```
-  cd amplify/backend/function/jwtauth/src/
-```
-
-*b. Edit the index.js function file and add your Cognito User Pool attributes*
-
-Open the config.js file, located in
-
-```
-  cd amplify/backend/function/jwtauth/src/
-  amplify/backend/function/jwtauth/src/config.js
-```
-
-List the auth resources created and copy the User Pool id.
-
-```
-  amplify auth console
-  Using service: Cognito, provided by: awscloudformation
-  ? Which console User Pool
-  User Pool console:
-  https://us-east-1.console.aws.amazon.com/cognito/users/?region=us-east-1#/pool/us-east-SomeID/details
-  Current Environment: dev
-```
-
-The user pool id can be located in the URL returned by running *amplify auth console*
-https://us-east-1.console.aws.amazon.com/cognito/users/?region=us-east-1#/pool/us-east-SomeID/details
-
-Add the Region of the deployment (Cognito region) to the var 
-
-```javascript
-  config.REGION = 'us-east-1'
-```
-
-Copy the *Pool Id *information and replace in the var USERPOOLID
-
-```javascript
-  config.USERPOOLID = 'us-east-1_SomeID';
-```
-
-*c. Download and store the corresponding public JSON Web Key (JWK) for your user pool. It is available as part of a JSON.*
-* *Web Key Set (JWKS). You can locate it at:
-https://cognito-idp.us-east-1.amazonaws.com/*us-east-SomeID*/.well-known/jwks.json
-
-For more information on JWK and JWK sets, see Cognito Verifying a JSON Web Token documentation (https://docs.aws.amazon.com/cognito/latest/developerguide/amazon-cognito-user-pools-using-tokens-verifying-a-jwt.html) and JSON Web Key (JWK) (https://tools.ietf.org/html/rfc7517).
-
-You can see the sample jwks.json  in JSON Web Token documentation (https://docs.aws.amazon.com/cognito/latest/developerguide/amazon-cognito-user-pools-using-tokens-verifying-a-jwt.html).
- Now replace the JWKS with the credentials of your Cognito User Pool.
-
-```javascript
-  config.JWKS = '{"keys":[{"alg":"RS256","e":"AQAB","kid":"1234exemple=","kty"::"RSA"....}]}
-```
-
-Now deploy your lambda function by simply executing amplify push in the home app folder.
-
-```
-  amplify push
-```
-
-6. *Deploy to Lambda@Edge*
+### 7. *Deploy to Lambda@Edge*
 
 Now that we have pushed the function to check the JWT Token to the cloud, you have to deploy it to your distribution, which has been created at step 5.
 
@@ -210,7 +153,7 @@ Then, select **Viewer Request**
 <img src="/doc/DeploytoEDGE02.png" alt="cloudfront arn" />
 
 
-7. End-to-End Tests
+### 8. End-to-End Tests
 
 Now open your web application and play some test content.
 In the video URL field, add the full CloudFront URL of your output asset created at step 5.
@@ -219,7 +162,7 @@ In the video URL field, add the full CloudFront URL of your output asset created
 8. Cleanup, removing the provisioned AWS resources.
 If you need to remove the resources deployed by this sample, you can use the command below:
 
-```
+```sh
   amplify delete
 ```
 
