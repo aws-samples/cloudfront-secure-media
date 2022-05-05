@@ -11,39 +11,36 @@ const path = require("path");
 const filePath = path.join(__dirname, "..", "..", "/src/aws-exports.js");
 readBlock(filePath);
 
-async function readBlock(file) {
-  await removeString(
-    file,
-    "const awsmobile = {",
-    "export default awsmobile;",
-    "};"
-  );
-
-  async function removeString(
-    fileName,
-    removeParam1,
-    removeParam2,
-    removeParam3
-  ) {
-    await fs.readFile(fileName, "utf8", function (err, data) {
+function readBlock(file_path) {
+  fs.readFile(file_path, "utf8", function (err, data) {
+    if (err) console.log(err);
+    else {
       let splitArray = data.split("\n");
-      splitArray.splice(splitArray.indexOf(removeParam1), 1);
-      splitArray.splice(splitArray.indexOf(removeParam2), 1);
-      splitArray.splice(splitArray.indexOf(removeParam3), 1);
-      let newArr = splitArray.slice(3);
+      let newArr = [];
+      newArr.push(searchParams("aws_cognito_region", splitArray));
+      newArr.push(
+        searchParams("aws_user_pools_id", splitArray).replace(/,/g, "")
+      );
       newArr.unshift("{");
       newArr.push("}");
-      let result = newArr.join("\n");
-      callImport(result);
-    });
+      let awsmobile = newArr.join("\n");
+      getJWKS(awsmobile);
+    }
+  });
+}
+
+function searchParams(element, arr) {
+  for (var i = 0; i < arr.length; i++) {
+    if (arr[i].match(element)) {
+      return arr[i];
+    }
   }
 }
 
-async function callImport(awsmobile) {
+async function getJWKS(awsmobile) {
   var awsConfig = JSON.parse(awsmobile);
-
   var config = {};
-  config.REGION = awsConfig.aws_project_region;
+  config.REGION = awsConfig.aws_cognito_region;
   config.USERPOOLID = awsConfig.aws_user_pools_id;
 
   var congnitoJWKSurl = `https://cognito-idp.${config.REGION}.amazonaws.com/${config.USERPOOLID}/.well-known/jwks.json`;
@@ -54,12 +51,10 @@ async function callImport(awsmobile) {
     await axios
       .get(url)
       .then(function (response) {
-        console.log(response);
         config.JWKS = response.data;
         writeConfig(config);
       })
       .catch(function (error) {
-        // handle error
         console.log(error);
       });
   }
