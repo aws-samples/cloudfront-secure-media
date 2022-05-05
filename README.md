@@ -1,4 +1,4 @@
-# Secure your Media Workloads with JWT Token with Lambda@Edge
+# Secure your Media Workloads with JWT Token with CloudFront Functions
 
 Video streaming is no longer exclusively done by media companies. Schools, ecommerce retailers, tech companies, and banks are creating media content to distribute directly to their consumers. Video streaming, both live and on-demand, has become the prevailing communication tool to reach the target audiences. As the value and number of media assets grow, creating a secure distribution workflow to ensure that only the intended audiences have access.
 
