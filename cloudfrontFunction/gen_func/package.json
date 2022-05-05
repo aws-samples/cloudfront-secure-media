@@ -1,0 +1,20 @@
+{
+  "name": "generate_cloudfront_func",
+  "version": "1.0.0",
+  "description": "generates the cloud front function code",
+  "main": "gen_func.js",
+  "scripts": {
+    "test": "node gen_func.js"
+  },
+  "keywords": [
+    "nodejs",
+    "cloudfront",
+    "functions"
+  ],
+  "author": "Osmar Bento - osmarb@",
+  "license": "MIT-0",
+  "dependencies": {
+    "base64url": "^3.0.1",
+    "jwk-to-pem": "^2.0.5"
+  }
+}
