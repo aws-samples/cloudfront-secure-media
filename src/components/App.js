@@ -9,6 +9,7 @@ import Navbar from "react-bootstrap/Navbar";
 import Container from "react-bootstrap/Container";
 import Home from "./Home";
 import Amplify from "@aws-amplify/core";
+import API from "@aws-amplify/api";
 import Auth from "@aws-amplify/auth";
 import { withAuthenticator } from "@aws-amplify/ui-react";
 import awsmobile from "../aws-exports";
@@ -26,18 +27,20 @@ function App(props) {
         await Auth.currentSession({ bypassCache: false }).then((session) => {
           console.log(
             "User name",
-            session.accessToken.payload.username
+            session.idToken.payload.email
             //session.accessToken.jwtToken // for Debug
           );
-          setUsername(session.accessToken.payload.username);
-          setToken(session.accessToken.jwtToken);
+          setUsername(session.idToken.payload.email);
         });
+        if (username) {
+          await getToken(username);
+        }
       } catch (e) {
         console.error("Error, no logeeed user ", e);
       }
     })();
     console.log("Simple Player JWT Mounted");
-  }, [username, token]);
+  }, [username]);
 
   const signOut = async () => {
     try {
@@ -46,6 +49,20 @@ function App(props) {
     } catch (err) {
       console.log("error signing out: ", err);
     }
+  };
+
+  const getToken = async (user) => {
+    console.log("user", user);
+    let apiName = "getToken";
+    let path = `/token/${user}`;
+    await API.get(apiName, path)
+      .then((response) => {
+        console.log("response", response);
+        setToken(response);
+      })
+      .catch((error) => {
+        console.log(error);
+      });
   };
 
   return username ? (

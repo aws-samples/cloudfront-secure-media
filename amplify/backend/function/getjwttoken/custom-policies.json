@@ -1,0 +1,7 @@
+[
+  {
+    "Effect": "Allow",
+    "Action": ["secretsmanager:GetSecretValue"],
+    "Resource": ["arn:aws:secretsmanager:::*"]
+  }
+]

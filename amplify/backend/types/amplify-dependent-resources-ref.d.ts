@@ -16,6 +16,19 @@ export type AmplifyDependentResourcesAttributes = {
             "Arn": "string",
             "Region": "string",
             "LambdaExecutionRole": "string"
+        },
+        "getjwttoken": {
+            "Name": "string",
+            "Arn": "string",
+            "Region": "string",
+            "LambdaExecutionRole": "string"
+        }
+    },
+    "api": {
+        "getToken": {
+            "RootUrl": "string",
+            "ApiName": "string",
+            "ApiId": "string"
         }
     }
 }

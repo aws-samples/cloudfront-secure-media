@@ -1,0 +1,17 @@
+{
+  "version": 1,
+  "paths": {
+    "/token": {
+      "name": "/token",
+      "lambdaFunction": "getjwttoken",
+      "permissions": {
+        "setting": "private",
+        "auth": [
+          "create",
+          "read",
+          "update"
+        ]
+      }
+    }
+  }
+}
