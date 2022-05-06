@@ -23,6 +23,7 @@ exports.handler = async (event) => {
   let header = {
     "alg": "HS256",
     "typ": "JWT",
+    "kid": "MySecretID",
   };
   header = JSON.stringify(header);
   header = Buffer.from(header).toString("base64url");
