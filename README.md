@@ -83,6 +83,12 @@ To create the Amazon Cognito user pool for authenticate our users, and provide t
   amplify push
 ```
 
+As we have a post-push script to retrieve the Amazon Cognito configuration, so to minimize the deployment steps, you need to push changes again in order to properly set the Lambda params.
+
+```sh
+  amplify push
+```
+
 ## 4. Start your local environment 
 
 Now you can start testig your application
