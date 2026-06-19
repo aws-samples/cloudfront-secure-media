@@ -1,0 +1,85 @@
+.page {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: var(--space-6) var(--space-6) var(--space-8);
+}
+
+/* Video-first hero stage */
+.stage {
+  animation: rise var(--dur-slow) var(--ease) both;
+  margin-bottom: var(--space-5);
+}
+
+.stageBar {
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
+  margin-top: var(--space-3);
+  padding: 0 var(--space-1);
+}
+
+.statusDot {
+  width: 9px;
+  height: 9px;
+  border-radius: 50%;
+  flex-shrink: 0;
+}
+
+.dotLive {
+  background: var(--err);
+  box-shadow: 0 0 0 0 rgba(209, 17, 73, 0.5);
+  animation: pulse 1.8s var(--ease) infinite;
+}
+
+.dotIdle {
+  background: var(--ink-faint);
+}
+
+.dotErr {
+  background: var(--err);
+}
+
+.statusText {
+  font-size: var(--text-sm);
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: var(--ink);
+}
+
+.stageMeta {
+  margin-left: auto;
+  font-family: var(--font-mono);
+  font-size: var(--text-sm);
+  font-variant-numeric: tabular-nums;
+  color: var(--ink-faint);
+}
+
+/* Secondary panels: source then diagnostics, stacked full-width */
+.grid {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-5);
+}
+
+.item {
+  animation: rise var(--dur-slow) var(--ease) both;
+}
+
+@keyframes pulse {
+  0% {
+    box-shadow: 0 0 0 0 rgba(209, 17, 73, 0.45);
+  }
+  70% {
+    box-shadow: 0 0 0 7px rgba(209, 17, 73, 0);
+  }
+  100% {
+    box-shadow: 0 0 0 0 rgba(209, 17, 73, 0);
+  }
+}
+
+@media (max-width: 600px) {
+  .page {
+    padding: var(--space-4) var(--space-4) var(--space-6);
+  }
+}
