@@ -5,7 +5,7 @@ before any byte leaves S3. Users sign in with Amazon Cognito; the edge validates
 segment request. Two interchangeable edge-auth modes are included — **Lambda@Edge** and
 **CloudFront Functions** — selectable at deploy time.
 
-📋 **[Release Notes](RELEASE_NOTES.md)** | 🏗️ **[Architecture](docs/ARCHITECTURE.md)** | 🔀 **[Edge Auth Modes](docs/EDGE-AUTH-MODES.md)** | 📖 **[Blog](docs/BLOG.md)** | 📄 **[License](LICENSE)**
+📋 **[Release Notes](RELEASE_NOTES.md)** | 🏗️ **[Architecture](docs/ARCHITECTURE.md)** | 🔀 **[Edge Auth Modes](docs/EDGE-AUTH-MODES.md)** | 📄 **[License](LICENSE)**
 
 ## 🏗️ Architecture
 
@@ -22,7 +22,7 @@ storage) · an edge validator (Lambda@Edge *or* CloudFront Function) · React + 
 foundation/      The single AWS CDK app — deploys ALL infrastructure with one `cdk deploy`
                  (Cognito, S3, CloudFront, edge validators, token-vending API, demo content).
 frontend/        Pure static React (Vite) app, configured at runtime from the deploy outputs.
-docs/            Architecture, edge-auth-mode decision guide, blog, diagrams.
+docs/            Architecture, edge-auth-mode decision guide, diagrams.
 ```
 
 ## 🔀 Which edge-auth mode? (read before deploying)
@@ -75,9 +75,16 @@ npm run dev          # Vite dev server on http://localhost:3000
 
 ### 3. Test
 
-1. 📝 Create an account and sign in (Cognito).
+1. 📝 Sign up for an account, then sign in — the app uses the Amplify Authenticator, which
+   supports self-service Cognito sign-up out of the box.
 2. 🎬 The demo video loads and plays automatically.
 3. 🔒 Open the raw video URL directly (no token) — the edge returns **401**.
+
+> **🔐 Security note:** self-service sign-up is enabled to make the demo easy to try. For
+> anything beyond a sample, manage who can create accounts on the server side rather than
+> trusting the client — e.g. disable open sign-up on the Cognito user pool and provision
+> users via the admin APIs, delegate to a federated IdP (SAML/OIDC), or gate sign-up behind
+> email-domain/allowlist rules or a Pre-Sign-up Lambda trigger.
 
 <img src="/docs/ui-preview.png" alt="Secure Media Player UI" />
 
