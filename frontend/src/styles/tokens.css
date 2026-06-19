@@ -1,0 +1,65 @@
+/* Design tokens — single source of truth. See .claude/design.md. */
+
+:root {
+  /* Color — light streaming console, Twitch brand palette
+     (purple #6441a5, light purple #b9a3e3, dark grey #262626, light grey #f1f1f1) */
+  --paper: #f1f1f1;
+  --surface: #ffffff;
+  --surface-sunk: #f1f1f1;
+  --ink: #262626;
+  --ink-soft: #4b4b52;
+  --ink-faint: #8a8a93;
+  --hairline: #e2e2e5;
+  --accent: #6441a5;
+  --accent-hover: #52357f;
+  --accent-light: #b9a3e3;
+  --accent-soft: rgba(100, 65, 165, 0.12);
+  --ok: #1f8b4c;
+  --warn: #b46e00;
+  --err: #d11149;
+
+  /* Typography — one clean sans for everything, mono for data */
+  --font-display: "Hanken Grotesk", system-ui, -apple-system, sans-serif;
+  --font-body: "Hanken Grotesk", system-ui, -apple-system, sans-serif;
+  --font-mono: "IBM Plex Mono", ui-monospace, "SF Mono", monospace;
+
+  --text-xs: 0.75rem;     /* 12 */
+  --text-sm: 0.8125rem;   /* 13 */
+  --text-base: 0.9375rem; /* 15 */
+  --text-lg: 1.125rem;    /* 18 */
+  --text-xl: 1.5rem;      /* 24 */
+  --text-2xl: 2rem;       /* 32 */
+
+  --lh-tight: 1.15;
+  --lh-snug: 1.4;
+  --lh-normal: 1.6;
+
+  /* Space (4px base) */
+  --space-1: 4px;
+  --space-2: 8px;
+  --space-3: 12px;
+  --space-4: 16px;
+  --space-5: 24px;
+  --space-6: 32px;
+  --space-7: 48px;
+  --space-8: 64px;
+
+  /* Radius — app-tight; player stays 20px (--radius-lg) */
+  --radius-sm: 8px;
+  --radius-md: 10px;
+  --radius-lg: 20px;
+
+  /* Shadow — soft, low-opacity (white panels on light-grey canvas) */
+  --shadow-sm: 0 1px 2px rgba(38, 38, 38, 0.06);
+  --shadow-md: 0 4px 16px rgba(38, 38, 38, 0.08);
+  --shadow-lg: 0 18px 48px rgba(38, 38, 38, 0.12);
+
+  /* Layout */
+  --page-max: 1100px;
+
+  /* Motion */
+  --ease: cubic-bezier(0.2, 0.7, 0.3, 1);
+  --dur-fast: 120ms;
+  --dur: 200ms;
+  --dur-slow: 420ms;
+}

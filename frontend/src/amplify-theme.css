@@ -1,0 +1,70 @@
+/* Retheme the Amplify Authenticator sign-in screen to match the design tokens.
+   Imported after @aws-amplify/ui-react/styles.css so these win. */
+
+[data-amplify-authenticator] {
+  --amplify-fonts-default-variable: var(--font-body);
+  --amplify-fonts-default-static: var(--font-body);
+
+  --amplify-colors-background-primary: var(--surface);
+  --amplify-colors-background-secondary: var(--paper);
+  --amplify-colors-font-primary: var(--ink);
+  --amplify-colors-font-secondary: var(--ink-soft);
+  --amplify-colors-font-tertiary: var(--ink-faint);
+
+  --amplify-colors-border-primary: var(--hairline);
+  --amplify-colors-border-secondary: var(--hairline);
+
+  --amplify-colors-brand-primary-10: var(--accent-soft);
+  --amplify-colors-brand-primary-80: var(--accent);
+  --amplify-colors-brand-primary-90: var(--accent-hover);
+  --amplify-colors-brand-primary-100: var(--accent-hover);
+
+  --amplify-components-button-primary-background-color: var(--accent);
+  --amplify-components-button-primary-hover-background-color: var(--accent-hover);
+  --amplify-components-button-link-color: var(--accent);
+
+  --amplify-components-fieldcontrol-border-color: var(--hairline);
+  --amplify-components-fieldcontrol-focus-border-color: var(--accent);
+
+  --amplify-radii-small: var(--radius-sm);
+  --amplify-radii-medium: var(--radius-sm);
+  --amplify-radii-large: var(--radius-md);
+
+  --amplify-components-authenticator-router-background-color: var(--surface);
+  --amplify-components-authenticator-router-border-color: var(--hairline);
+  --amplify-components-authenticator-router-box-shadow: var(--shadow-md);
+
+  /* Tabs (Sign In / Create Account) */
+  --amplify-components-tabs-item-color: var(--ink-soft);
+  --amplify-components-tabs-item-active-color: var(--accent);
+  --amplify-components-tabs-item-active-border-color: var(--accent);
+  --amplify-components-tabs-item-focus-color: var(--accent);
+  --amplify-components-tabs-item-hover-color: var(--accent-hover);
+  --amplify-components-tabs-border-color: var(--hairline);
+
+  font-family: var(--font-body);
+}
+
+[data-amplify-authenticator] [data-amplify-router] {
+  border-radius: var(--radius-md);
+  box-shadow: var(--shadow-md);
+}
+
+[data-amplify-authenticator] .amplify-heading {
+  font-family: var(--font-display);
+}
+
+/* Tabs: active item + top indicator track the accent, not the Amplify teal */
+[data-amplify-authenticator] .amplify-tabs__item {
+  color: var(--ink-soft);
+  font-weight: 600;
+}
+
+[data-amplify-authenticator] .amplify-tabs__item--active {
+  color: var(--accent);
+  border-color: var(--accent);
+}
+
+[data-amplify-authenticator] .amplify-tabs__item:hover {
+  color: var(--accent-hover);
+}

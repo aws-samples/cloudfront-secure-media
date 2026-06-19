@@ -1,0 +1,29 @@
+{
+  "name": "cloudfront-secure-media-foundation",
+  "version": "1.0.0",
+  "description": "CDK app that deploys the secure media streaming infrastructure (Cognito, S3, CloudFront, edge auth, token-vending API).",
+  "private": true,
+  "bin": {
+    "foundation": "bin/foundation.js"
+  },
+  "scripts": {
+    "build": "tsc",
+    "watch": "tsc -w",
+    "synth": "cdk synth",
+    "bootstrap": "cdk bootstrap",
+    "deploy": "node scripts/deploy.mjs",
+    "deploy:lambda-edge": "node scripts/deploy.mjs -c authMode=lambda-edge",
+    "deploy:cloudfront-function": "node scripts/deploy.mjs -c authMode=cloudfront-function",
+    "destroy": "cdk destroy --all"
+  },
+  "devDependencies": {
+    "@types/node": "^20.14.0",
+    "aws-cdk": "^2.1027.0",
+    "ts-node": "^10.9.2",
+    "typescript": "^5.5.0"
+  },
+  "dependencies": {
+    "aws-cdk-lib": "^2.260.0",
+    "constructs": "^10.3.0"
+  }
+}

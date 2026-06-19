@@ -1,0 +1,13 @@
+{
+  "region": "us-east-1",
+  "cognito": {
+    "userPoolId": "REPLACE_ME",
+    "userPoolClientId": "REPLACE_ME"
+  },
+  "cloudfront": {
+    "distributionUrl": "https://REPLACE_ME.cloudfront.net",
+    "demoVideoUrl": "https://REPLACE_ME.cloudfront.net/big_buck_bunny.m3u8"
+  },
+  "authMode": "lambda-edge",
+  "tokenVendingApiUrl": null
+}

@@ -1,0 +1,10 @@
+{
+  "name": "jwt-auth-edge",
+  "version": "1.0.0",
+  "description": "Lambda@Edge RS256 validator for CloudFront viewer-request.",
+  "main": "index.js",
+  "private": true,
+  "dependencies": {
+    "@aws-sdk/client-ssm": "^3.600.0"
+  }
+}

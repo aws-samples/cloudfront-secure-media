@@ -1,0 +1,17 @@
+# CDK — ignore compiled TS output (bin/ and lib/ only), not runtime sources
+cdk.out/
+cdk-outputs.json
+/bin/**/*.js
+/bin/**/*.d.ts
+/lib/**/*.js
+/lib/**/*.d.ts
+# edge/, lambda/, and scripts/ hold hand-written .js/.mjs runtime code — keep them
+
+# Deps
+node_modules/
+
+# Generated demo source (large) - HLS output under assets/demo/hls is committed
+assets/demo/source/
+
+# Logs
+npm-debug.log*

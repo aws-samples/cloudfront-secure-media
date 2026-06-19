@@ -1,0 +1,15 @@
+{
+  "name": "cloudfront-secure-media-tests",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "description": "Integration tests for the edge-auth layer (Lambda@Edge and CloudFront Functions modes).",
+  "scripts": {
+    "test": "node --test",
+    "test:lambda-edge": "node --test test-lambda-edge.mjs",
+    "test:cff": "node --test test-cloudfront-function.mjs"
+  },
+  "engines": {
+    "node": ">=22.0.0"
+  }
+}

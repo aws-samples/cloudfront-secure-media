@@ -1,0 +1,64 @@
+/* Player fills the 16:9 stage provided by VideoCard. */
+
+.player {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  background: #000;
+  line-height: 0;
+}
+
+/* Video.js overrides (global classes from the CDN stylesheet) */
+.player :global(.video-js) {
+  width: 100%;
+  height: 100%;
+  font-family: var(--font-body);
+}
+
+.player :global(.video-js .vjs-tech) {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+
+/* Clean circular big-play button — no purple, light-on-dark */
+.player :global(.video-js .vjs-big-play-button) {
+  width: 76px;
+  height: 76px;
+  line-height: 76px;
+  border-radius: 50%;
+  border: none;
+  background-color: rgba(255, 255, 255, 0.92);
+  color: var(--ink);
+  box-shadow: var(--shadow-lg);
+  transition: transform var(--dur) var(--ease),
+    box-shadow var(--dur) var(--ease);
+}
+
+.player :global(.video-js .vjs-big-play-button .vjs-icon-placeholder::before) {
+  line-height: 76px;
+  color: var(--ink);
+}
+
+.player :global(.video-js:hover .vjs-big-play-button),
+.player :global(.video-js .vjs-big-play-button:focus) {
+  transform: scale(1.04);
+  outline: 3px solid var(--accent);
+  outline-offset: 3px;
+  background-color: #fff;
+}
+
+/* Accent the control bar progress + volume */
+.player :global(.video-js .vjs-play-progress),
+.player :global(.video-js .vjs-volume-level) {
+  background-color: var(--accent);
+}
+
+.player :global(.video-js .vjs-control-bar) {
+  background-color: rgba(22, 20, 15, 0.72);
+}
+
+.player :global(.video-js .vjs-slider) {
+  background-color: rgba(255, 255, 255, 0.25);
+}
