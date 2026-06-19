@@ -61,6 +61,11 @@ function VideoPlayer({ options, token, onReady }) {
       container.appendChild(videoElement);
 
       const player = (playerRef.current = videojs(videoElement, options, () => {
+        // Add the HLS quality selector (Auto + each rendition) if the optional
+        // plugin loaded. Guarded so a missing/failed plugin never breaks playback.
+        if (typeof player.httpSourceSelector === "function") {
+          player.httpSourceSelector();
+        }
         onReady && onReady(player);
       }));
     } else {

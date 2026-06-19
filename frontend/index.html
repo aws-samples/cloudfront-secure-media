@@ -24,6 +24,11 @@
     <!-- Video.js JS (exposes the global `videojs` used by src/components/player/VideoPlayer.jsx) -->
     <script src="https://vjs.zencdn.net/8.6.1/video.min.js"></script>
 
+    <!-- HLS quality selector: adds a control-bar menu to switch renditions
+         (Auto + each bitrate). Reads the quality levels VHS already exposes.
+         Optional — if it fails to load, the player still works (auto quality). -->
+    <script src="https://unpkg.com/videojs-http-source-selector@1.1.6/dist/videojs-http-source-selector.min.js"></script>
+
     <!-- App entry (Vite) -->
     <script type="module" src="/src/index.js"></script>
   </body>
