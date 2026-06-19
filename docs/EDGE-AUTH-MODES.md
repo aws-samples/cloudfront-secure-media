@@ -5,8 +5,8 @@ This sample ships **two interchangeable edge-validation modes**, both deployed b
 
 ```sh
 cd foundation
-npm run deploy                                      # lambda-edge (default)
-npm run deploy -- -c authMode=cloudfront-function   # cloudfront-function
+npm run deploy                       # lambda-edge (default)
+npm run deploy:cloudfront-function   # cloudfront-function
 ```
 
 The frontend reads the active mode from `runtime-config.json` at runtime, so the **same build** works

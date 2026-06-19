@@ -11,9 +11,9 @@
     "watch": "tsc -w",
     "synth": "cdk synth",
     "bootstrap": "cdk bootstrap",
-    "deploy": "cdk deploy --all --require-approval never --outputs-file cdk-outputs.json && node scripts/write-frontend-config.mjs",
-    "deploy:lambda-edge": "cdk deploy --all --require-approval never --outputs-file cdk-outputs.json -c authMode=lambda-edge && node scripts/write-frontend-config.mjs",
-    "deploy:cloudfront-function": "cdk deploy --all --require-approval never --outputs-file cdk-outputs.json -c authMode=cloudfront-function && node scripts/write-frontend-config.mjs",
+    "deploy": "node scripts/deploy.mjs",
+    "deploy:lambda-edge": "node scripts/deploy.mjs -c authMode=lambda-edge",
+    "deploy:cloudfront-function": "node scripts/deploy.mjs -c authMode=cloudfront-function",
     "destroy": "cdk destroy --all"
   },
   "devDependencies": {

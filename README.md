@@ -54,9 +54,9 @@ cd foundation
 npm install
 npx cdk bootstrap                                   # once per account/region (us-east-1)
 
-npm run deploy                                      # default: lambda-edge mode
+npm run deploy                       # default: lambda-edge mode
 # or:
-npm run deploy -- -c authMode=cloudfront-function   # CloudFront Functions mode
+npm run deploy:cloudfront-function   # CloudFront Functions mode
 ```
 
 `npm run deploy` runs `cdk deploy --all`, then writes the deploy outputs (Cognito IDs, CloudFront URL,
@@ -88,7 +88,7 @@ active mode from `runtime-config.json` and adapts automatically:
 
 ```sh
 cd foundation
-npm run deploy -- -c authMode=cloudfront-function
+npm run deploy:cloudfront-function   # or: npm run deploy  (lambda-edge)
 ```
 
 ## 🎥 Optional: use your own video
