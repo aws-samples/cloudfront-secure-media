@@ -14,9 +14,14 @@
     "vite": "^6.0.7"
   },
   "scripts": {
+    "seed-config": "node scripts/seed-runtime-config.mjs",
+    "predev": "npm run seed-config",
     "dev": "vite",
+    "prestart": "npm run seed-config",
     "start": "vite",
+    "prebuild": "npm run seed-config",
     "build": "vite build",
+    "prepreview": "npm run seed-config",
     "preview": "vite preview"
   },
   "browserslist": {
